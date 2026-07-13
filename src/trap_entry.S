@@ -3,7 +3,6 @@
 # https://docs.riscv.org/reference/isa/priv/supervisor.html#12-1-1-2-supervisor-trap-vector-base-address-stvec-register
 .text
 .globl trap_entry
-.align 4
 trap_entry:
     # Aloca 160 bytes na pilha (múltiplo de 16)
     addi sp, sp, -160
