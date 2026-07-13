@@ -1,7 +1,6 @@
 # this is what will be loaded into the stvec CSR; the
 # trap handler address must be 4-byte aligned:
 # https://docs.riscv.org/reference/isa/priv/supervisor.html#12-1-1-2-supervisor-trap-vector-base-address-stvec-register
-.text
 .globl trap_entry
 .align 4
 trap_entry:
