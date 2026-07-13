@@ -1,7 +1,7 @@
 #include <arch/timer.h>
 #include <kernel/panic.h>
 #include <kernel/printf.h>
-#include <include/arch/csr.h>
+#include <arch/csr.h>
 
 u64 timer_read()
 {

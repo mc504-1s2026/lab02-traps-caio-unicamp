@@ -1,7 +1,7 @@
 #include <kernel/trap.h>
 #include <kernel/panic.h>
-#include <include/arch/csr.h>
-#include <include/arch/plic.h>
+#include <arch/csr.h>
+#include <arch/plic.h>
 
 #define TRAP_IRQ_BIT			(1ULL << 63)
 #define TRAP_CODE_MASK			(TRAP_IRQ_BIT - 1)

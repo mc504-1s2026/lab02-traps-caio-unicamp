@@ -1,7 +1,7 @@
 #include <kernel/serial.h>
 #include <kernel/panic.h>
-#include <include/arch/spinlock.h>
-#include <include/arch/plic.h>
+#include <arch/spinlock.h>
+#include <arch/plic.h>
 #include <kernel/types.h>
 
 // Mapeamento Direto para acessar a memória física na metade superior
