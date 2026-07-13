@@ -31,7 +31,7 @@ void kmain()
     int cmd_idx = 0;
     
     // Imprime ">" no começo
-    print("> ");
+    serial_puts("> ");
 
     while (1) {
         char rx_buf[32];
