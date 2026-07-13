@@ -31,7 +31,7 @@ void kmain()
     int cmd_idx = 0;
     
     // Imprime ">" no começo
-    printf("> ");
+    print("> ");
 
     while (1) {
         char rx_buf[32];
@@ -61,12 +61,12 @@ void kmain()
                     if (strcmp(cmd_buf, "uptime") == 0) {
                         u64 ticks = timer_read();
                         u64 seconds = ticks / 10000000ULL; // Divide pela frequência (10MHz)
-                        printk("%llus\n", seconds);
+                        printk(LOG_INFO, "%llus\n", seconds);
                     } 
                     // Comando: echo [str]
                     else if (strncmp(cmd_buf, "echo ", 5) == 0) {
                         // Imprime a string ignorando os 5 primeiros caracteres ("echo ")
-                        printk("%s\n", cmd_buf + 5);
+                        printk(LOG_INFO, "%s\n", cmd_buf + 5);
                     }
                     // Comando: alarm [time]
                     else if (strncmp(cmd_buf, "alarm ", 6) == 0) {
@@ -79,13 +79,13 @@ void kmain()
                     }
                     // Comando inválido
                     else {
-                        printk("Comando nao encontrado: %s\n", cmd_buf);
+                        printk(LOG_INFO, "Comando nao encontrado: %s\n", cmd_buf);
                     }
                 }
 
                 // Prepara o buffer para o próximo comando e imprime o prompt novamente
                 cmd_idx = 0;
-                printf("> ");
+                print("> ");
             } 
             // Tratamento bônus/ux: Backspace (0x08) ou DEL (0x7F)
             else if (c == '\b' || c == 0x7F) {

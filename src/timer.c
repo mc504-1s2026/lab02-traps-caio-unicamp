@@ -38,5 +38,5 @@ void timer_irq()
     timer_irq_disable();	// Assegura que o irq_timer está desabilitado para não ter infinitas exceções
     
     // imprime "alarm" quando o timer estourar
-    printf("alarm\n");
+    print("alarm\n");
 }
