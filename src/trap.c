@@ -3,7 +3,6 @@
 #include <arch/csr.h>
 #include <arch/plic.h>
 
-#define TRAP_IRQ_BIT			(1ULL << 63)
 #define TRAP_CODE_MASK			(TRAP_IRQ_BIT - 1)
 #define TRAP_INST_ACCESS_FAULT		1
 #define TRAP_LOAD_ACCESS_FAULT		5
@@ -25,10 +24,6 @@ extern void serial_irq();
 
 /* defined in src/trap_entry.S */
 extern void trap_entry();
-
-static bool ktest_fault_occurred = false;
-static bool ktest_fault_expected = false;
-static u64 ktest_fault_return_addr = 0;
 
 void handle_irq()
 {
