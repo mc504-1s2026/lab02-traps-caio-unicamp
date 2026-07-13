@@ -80,24 +80,28 @@ void handle_trap()
 
 void hart_irq_enable()
 {
-	/* not implemented */
-	BUG();
+    // Seta o bit SIE em sstatus para habilitar interrupções
+    csr_set(CSR_SSTATUS, CSR_SSTATUS_SIE);
 }
 
 u64 hart_irq_save()
 {
-	/* not implemented */
-	BUG();
+    // Lê o valor atual de sstatus, limpa o bit SIE atomicamente, e retorna o valor antigo
+    return csr_read_clear(CSR_SSTATUS, CSR_SSTATUS_SIE);
 }
 
 void hart_irq_restore(u64 flags)
 {
-	/* not implemented */
-	BUG();
+    // Restaura o estado das interrupções baseado no valor salvo de sstatus
+    if (flags & CSR_SSTATUS_SIE) {
+        hart_irq_enable();
+    } else {
+        hart_irq_disable();
+    }
 }
 
 void hart_irq_disable()
 {
-	/* not implemented */
-	BUG();
+    // Limpa o bit SIE em sstatus para desabilitar interrupções
+    csr_clear(CSR_SSTATUS, CSR_SSTATUS_SIE);
 }
