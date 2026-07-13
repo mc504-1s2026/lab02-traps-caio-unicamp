@@ -43,7 +43,7 @@ void handle_irq()
 
         case IRQ_S_EXT: {
             // Interrupção externa
-            int irq = plic_hart_claim_irq(0);	// Está sempre no hart 0
+            u32 irq = plic_hart_claim_irq(0);	// Está sempre no hart 0
             
             if (irq != 0) {
                 if (irq == UART_IRQ) {
