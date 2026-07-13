@@ -4,11 +4,8 @@
 #include <arch/plic.h>
 #include <kernel/types.h>
 
-// Mapeamento Direto para acessar a memória física na metade superior
-#define KERNEL_DIRECT_MAP_START 0xFFFFFFC000000000ULL
-
 // Macro para acesso MMIO: soma a base virtual com o offset do registrador
-#define SERIAL_REG(offset) (*(volatile u8 *)(KERNEL_DIRECT_MAP_START + (u64)SERIAL_BASE + (offset)))
+#define SERIAL_REG(offset) (*(volatile u8 *)((u64)SERIAL_BASE + (offset)))
 
 #define SERIAL_BUF_SIZE 256
 
