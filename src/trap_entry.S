@@ -60,7 +60,7 @@ trap_entry:
     ld a7, 128(sp)
     ld s2, 136(sp)
     ld s3, 144(sp)
-    sd s4, 152(sp)
+    ld s4, 152(sp)
     ld s5, 160(sp)
     ld s6, 168(sp)
     ld s7, 176(sp)
