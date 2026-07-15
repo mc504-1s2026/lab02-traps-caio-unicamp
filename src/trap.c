@@ -97,7 +97,7 @@ void handle_exception()
 void trap_setup()
 {
     // Grava o endereço do handler de assembly no CSR stvec
-    csr_write(CSR_STVEC, trap_entry);
+    csr_write(CSR_STVEC, (u64)trap_entry);
 }
 
 void handle_trap()
