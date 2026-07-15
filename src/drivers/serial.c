@@ -3,6 +3,7 @@
 #include <arch/spinlock.h>
 #include <arch/plic.h>
 #include <kernel/types.h>
+#include <arch/csr.h>
 
 // Macro para acesso MMIO: soma a base virtual com o offset do registrador
 #define SERIAL_REG(offset) (*(volatile u8 *)((u64)SERIAL_BASE + (offset)))
@@ -49,6 +50,9 @@ void serial_irq_enable()
     plic_irq_set_priority(IRQ_SERIAL, 1);       // Prioridade 1 (qualquer coisa > 0 é válida)
     plic_hart_set_threshold(0, 0);            // Aceita prioridades maiores que 0
     plic_hart_enable_irq(0, IRQ_SERIAL);        // Habilita o IRQ 10
+
+    // Habilita interrupções externas globalmente no Hart
+    csr_set(CSR_SIE, CSR_SIE_SEIE);
 }
 
 void serial_irq_disable()
