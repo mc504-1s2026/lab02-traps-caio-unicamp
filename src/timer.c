@@ -13,6 +13,8 @@ void timer_irq_enable()
 {
     // Seta o bit STIE no registrador sie
     csr_set(CSR_SIE, CSR_SIE_STIE);
+
+	csr_write(CSR_STIMECMP, csr_read(CSR_TIME) + TIMER_FREQ);
 }
 
 void timer_irq_disable()
@@ -34,9 +36,10 @@ void timer_set_alarm(u64 secs)
 }
 
 void timer_irq()
-{
-    timer_irq_disable();	// Assegura que o irq_timer está desabilitado para não ter infinitas exceções
-    
+{    
     // imprime "alarm" quando o timer estourar
     print("alarm\n");
+    csr_write(CSR_STIMECMP, -1ULL); // Taca o tempo pra infinito
 }
+
+
